@@ -16,7 +16,7 @@ node[:deploy].each do |appname, deployconfig|
     variables(:redis => deployconfig[:redis] || {})
 
     # only generate a file if there is Redis configuration
-    notif do
+    not_if do
       deploy_config[:redis].blank?
     end
   end
